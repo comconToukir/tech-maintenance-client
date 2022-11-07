@@ -1,12 +1,13 @@
 import { useContext } from "react";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 
+import { signOutUser } from "../../../utils/firebase.utils";
 import { UserContext } from "../../../Contexts/UserContext";
 import logo from "../../../assets/logo/logo.jpg";
 
 const Header = () => {
   const navigate = useNavigate();
-  const { user, signOutUser } = useContext(UserContext);
+  const { user } = useContext(UserContext);
 
   const handleLogOut = () =>
     signOutUser()
@@ -21,7 +22,7 @@ const Header = () => {
       {user?.email ? (
         <>
           <li className="font-semibold">
-            <Link to="/orders">Orders</Link>
+            <Link to="/orders">My Reviews</Link>
           </li>
           <li className="font-semibold">
             <button onClick={handleLogOut}>Log Out</button>
@@ -40,7 +41,7 @@ const Header = () => {
     </>
   );
   return (
-    <div className="drawer w-full bg-base-200">
+    <div className="drawer bg-base-200">
       <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content flex flex-col">
         {/* <!-- Navbar --> */}
@@ -73,7 +74,7 @@ const Header = () => {
           </div>
         </div>
         {/* <!-- Page content here --> */}
-        <div className="max-w-screen-xl mx-auto">
+        <div>
           <Outlet />
         </div>
       </div>
