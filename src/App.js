@@ -1,6 +1,6 @@
 import { useContext, useEffect } from 'react';
 import { RouterProvider } from 'react-router-dom';
-import { UserContext } from './Contexts/AuthContext';
+import { UserContext } from './Contexts/UserContext';
 import router from './Router/Routes/Routes';
 import { onAuthStateChangedListener } from './utils/firebase.utils';
 

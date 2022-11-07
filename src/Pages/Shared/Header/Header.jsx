@@ -1,12 +1,12 @@
 import { useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 
-import { AuthContext } from "./../../../Contexts/AuthContext";
-import logo from "../../../assets/logo/154-1547715_handyman-logo-png.png";
+import { UserContext } from "../../../Contexts/UserContext";
+import logo from "../../../assets/logo/logo.jpg";
 
 const Header = () => {
   const navigate = useNavigate();
-  const { user, signOutUser } = useContext(AuthContext);
+  const { user, signOutUser } = useContext(UserContext);
 
   const handleLogOut = () =>
     signOutUser()
@@ -28,50 +28,61 @@ const Header = () => {
           </li>
         </>
       ) : (
+        <>
         <li className="font-semibold">
           <Link to="/login">Login</Link>
         </li>
+        <li className="font-semibold">
+          <Link to="/sign-up">Sign Up</Link>
+        </li>
+        </>
       )}
     </>
   );
   return (
-    <div>
-      <div className="navbar bg-base-100 mb-3">
-        <div className="navbar-start h-28 ">
-          <div className="dropdown">
-            <label tabIndex={0} className="btn btn-ghost lg:hidden">
+    <div className="drawer w-full bg-base-200">
+      <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
+      <div className="drawer-content flex flex-col">
+        {/* <!-- Navbar --> */}
+        <div className="max-w-screen-xl navbar bg-base-300">
+          <div className="flex-none lg:hidden">
+            <label htmlFor="my-drawer-3" className="btn btn-square btn-ghost">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
                 fill="none"
                 viewBox="0 0 24 24"
-                stroke="currentColor"
+                className="inline-block w-6 h-6 stroke-current"
               >
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   strokeWidth="2"
-                  d="M4 6h16M4 12h8m-8 6h16"
-                />
+                  d="M4 6h16M4 12h16M4 18h16"
+                ></path>
               </svg>
             </label>
-            <ul
-              tabIndex={0}
-              className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
-            >
+          </div>
+          <div className="flex-1 px-2 mx-2">
+            <img src={logo} className="h-24" alt="" />
+          </div>
+          <div className="flex-none hidden lg:block">
+            <ul className="menu menu-horizontal">
+              {/* <!-- Navbar menu content here --> */}
               {menuItems}
             </ul>
           </div>
-          <Link to="/" className="">
-            <img className="" src={logo} alt="" />
-          </Link>
         </div>
-        <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal p-0">{menuItems}</ul>
+        {/* <!-- Page content here --> */}
+        <div className="max-w-screen-xl mx-auto">
+          <Outlet />
         </div>
-        <div className="navbar-end">
-          <Link className="btn btn-outline btn-warning">Appointment</Link>
-        </div>
+      </div>
+      <div className="drawer-side">
+        <label htmlFor="my-drawer-3" className="drawer-overlay"></label>
+        <ul className="menu p-4 w-80 bg-base-100">
+          {/* <!-- Sidebar content here --> */}
+          {menuItems}
+        </ul>
       </div>
     </div>
   );
