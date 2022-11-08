@@ -69,7 +69,8 @@ const Header = () => {
             </label>
           </div>
           <div className="flex-1 px-2 mx-2">
-            <img src={logo} className="h-20" alt="" />
+            <img src={logo} className="h-16 lg:h-20" alt="" />
+            <h1 className="ml-7 text-2xl lg:text-3xl font-semibold lg:tracking-wider">TECH MAINTENANCE</h1>
           </div>
           <div className="flex-none hidden lg:block">
             <ul className="menu menu-horizontal">

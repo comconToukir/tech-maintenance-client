@@ -4,7 +4,8 @@ import {
   onAuthStateChanged,
   signInWithPopup,
   updateProfile,
-  signOut
+  signOut,
+  signInWithEmailAndPassword
 } from "firebase/auth";
 
 import app from '../firebase.config';
@@ -17,6 +18,10 @@ export const signInWithGooglePopup = () => signInWithPopup(auth, googleProvider)
 
 export const createUser = async (email, password) => {
   return await createUserWithEmailAndPassword(auth, email, password);
+}
+
+export const signInUser = async (email, password) => {
+  return await signInWithEmailAndPassword(auth, email, password);
 }
 
 export const updateUserProfile = (profile) => {

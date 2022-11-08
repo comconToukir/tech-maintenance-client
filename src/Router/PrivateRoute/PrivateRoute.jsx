@@ -13,7 +13,7 @@ const PrivateRoute = ({ children }) => {
   if (loading) return <Spinner />;
 
   if (!user)
-    return <Navigate to="/sign-up" state={{ from: location }} replace />;
+    return <Navigate to="/login" state={{ from: location }} replace />;
 
   return children;
 };

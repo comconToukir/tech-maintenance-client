@@ -29,8 +29,8 @@ const SignUp = () => {
 
   const handleUpdateProfile = (profile) => {
     updateUserProfile(profile)
-      .then(toast.success("Welcome to Tech Maintenance community"))
-      .then(navigate(from))
+      .then(toast.success("Welcome to Tech Maintenance"))
+      .then(() => navigate(from))
       .catch((error) => console.error(error));
   };
 
@@ -50,7 +50,12 @@ const SignUp = () => {
       });
   };
 
-  const handleGoogleSignIn = () => signInWithGooglePopup().then(navigate(from));
+  const handleGoogleSignIn = () => {
+    setLoading(true);
+    signInWithGooglePopup().then(() => {
+      navigate(from);
+    });
+  };
 
   return (
     <div className="mt-20 px-4 py-6 bg-base-300 max-w-md mx-auto rounded-md shadow-sm">
@@ -130,7 +135,7 @@ const SignUp = () => {
             <p className="text-red-500">Password must be 6 characters long.</p>
           )}
           <input
-            className="btn-outline capitalize font-semibold py-3 mt-7 rounded-md cursor-pointer"
+            className="btn btn-outline capitalize font-semibold py-3 mt-7 rounded-md cursor-pointer"
             type="submit"
             value="Sign up"
             aria-label="submit"
