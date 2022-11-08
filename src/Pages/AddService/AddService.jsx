@@ -1,5 +1,8 @@
 import axios from "axios";
 import { useState } from "react";
+import {
+  useQueryClient
+} from '@tanstack/react-query'
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import { AiOutlinePicture } from "react-icons/ai";
@@ -10,6 +13,8 @@ const axiosHeader = {
 
 const AddService = () => {
   const [previewSource, setPreviewSource] = useState("");
+
+  const queryClient = useQueryClient();
 
   const {
     register,
@@ -41,14 +46,13 @@ const AddService = () => {
       description,
     };
 
-    console.log({ serviceName, price, description, imageString });
-
     axios
       .post("http://localhost:5000/add-service", { formData }, axiosHeader)
       .then((res) => {
         toast.success("Successfully added the new service.");
         setPreviewSource("")
         reset();
+        queryClient.invalidateQueries({ queryKey: ['three-services'] });
       })
       .catch((err) => console.error(err))
   };
