@@ -25,12 +25,16 @@ const SignUp = () => {
     register,
     handleSubmit,
     formState: { errors },
+    reset
   } = useForm();
 
   const handleUpdateProfile = (profile) => {
     updateUserProfile(profile)
-      .then(toast.success("Welcome to Tech Maintenance"))
-      .then(() => navigate(from))
+      .then(() => toast.success("Welcome to Tech Maintenance"))
+      .then(() => {
+        reset();
+        navigate(from)
+      })
       .catch((error) => console.error(error));
   };
 
@@ -43,7 +47,7 @@ const SignUp = () => {
     setLoading(true);
 
     createUser(email, password)
-      .then(handleUpdateProfile({ displayName, photoURL }))
+      .then(() => handleUpdateProfile({ displayName, photoURL }))
       .catch((error) => {
         toast.error(error.code);
         console.error(error);

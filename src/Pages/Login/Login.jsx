@@ -19,6 +19,7 @@ const Login = () => {
     register,
     handleSubmit,
     formState: { errors },
+    reset
   } = useForm();
 
   const handleSignIn = (data) => {
@@ -29,6 +30,7 @@ const Login = () => {
 
     signInUser(email, password)
       .then(() => {
+        reset();
         toast.success("Welcome back.")
         navigate(from, { replace: true });
       })

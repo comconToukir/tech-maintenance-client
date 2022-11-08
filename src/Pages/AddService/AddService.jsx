@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "react-hot-toast";
 import { AiOutlinePicture } from "react-icons/ai";
 
 const axiosHeader = {
@@ -14,6 +15,7 @@ const AddService = () => {
     register,
     handleSubmit,
     formState: { errors },
+    reset
   } = useForm();
 
   const handleImageChange = (event) => {
@@ -27,24 +29,28 @@ const AddService = () => {
   };
 
   const onSubmit = (data) => {
-    const image = previewSource;
+    const imageString = previewSource;
     const serviceName = data.serviceName;
     const price = data.price;
     const description = data.description;
 
     const formData = {
-      image,
+      imageString,
       serviceName,
       price,
       description,
     };
 
-    console.log({ serviceName, price, description, image });
+    console.log({ serviceName, price, description, imageString });
 
     axios
       .post("http://localhost:5000/add-service", { formData }, axiosHeader)
-      .then((res) => console.log(res))
-      .catch(err => console.error(err))
+      .then((res) => {
+        toast.success("Successfully added the new service.");
+        setPreviewSource("")
+        reset();
+      })
+      .catch((err) => console.error(err))
   };
 
   return (
