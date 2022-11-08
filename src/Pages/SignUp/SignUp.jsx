@@ -2,8 +2,13 @@ import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { toast } from "react-hot-toast";
+import { FaGoogle } from "react-icons/fa";
 
-import { createUser, updateUserProfile } from "../../utils/firebase.utils";
+import {
+  createUser,
+  signInWithGooglePopup,
+  updateUserProfile,
+} from "../../utils/firebase.utils";
 import { UserContext } from "../../Contexts/UserContext";
 
 const SignUp = () => {
@@ -14,6 +19,8 @@ const SignUp = () => {
 
   const from = location.state?.from?.pathname || "/";
 
+  console.log(from);
+
   const {
     register,
     handleSubmit,
@@ -22,9 +29,8 @@ const SignUp = () => {
 
   const handleUpdateProfile = (profile) => {
     updateUserProfile(profile)
-      .then(() => {
-        navigate(from);
-      })
+      .then(toast.success("Welcome to Tech Maintenance community"))
+      .then(navigate(from))
       .catch((error) => console.error(error));
   };
 
@@ -37,15 +43,14 @@ const SignUp = () => {
     setLoading(true);
 
     createUser(email, password)
-      .then((result) => {
-        handleUpdateProfile({ displayName, photoURL });
-        toast.success("Please verify your email address before continuing.");
-      })
+      .then(handleUpdateProfile({ displayName, photoURL }))
       .catch((error) => {
         toast.error(error.code);
         console.error(error);
       });
   };
+
+  const handleGoogleSignIn = () => signInWithGooglePopup().then(navigate(from));
 
   return (
     <div className="mt-20 px-4 py-6 bg-base-300 max-w-md mx-auto rounded-md shadow-sm">
@@ -138,6 +143,12 @@ const SignUp = () => {
           Login
         </Link>
       </p>
+      <div className="flex flex-col justify-center items-center mt-5">
+        <FaGoogle
+          onClick={handleGoogleSignIn}
+          className="bg-base-100 text-white w-10 h-10 p-2 rounded-full cursor-pointer"
+        />
+      </div>
     </div>
   );
 };

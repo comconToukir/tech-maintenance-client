@@ -13,7 +13,7 @@ const googleProvider = new GoogleAuthProvider();
 
 export const auth = getAuth(app);
 
-export const signInWithGooglePopup = signInWithPopup(auth, googleProvider);
+export const signInWithGooglePopup = () => signInWithPopup(auth, googleProvider);
 
 export const createUser = async (email, password) => {
   return await createUserWithEmailAndPassword(auth, email, password);

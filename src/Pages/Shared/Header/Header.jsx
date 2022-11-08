@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { Link, Outlet, useNavigate } from "react-router-dom";
+import { FaBars } from 'react-icons/fa';
 
 import { signOutUser } from "../../../utils/firebase.utils";
 import { UserContext } from "../../../Contexts/UserContext";
@@ -22,7 +23,10 @@ const Header = () => {
       {user?.email ? (
         <>
           <li className="font-semibold">
-            <Link to="/orders">My Reviews</Link>
+            <Link to="/add-service">Add Service</Link>
+          </li>
+          <li className="font-semibold">
+            <Link to="/my-reviews">My Reviews</Link>
           </li>
           <li className="font-semibold">
             <button onClick={handleLogOut}>Log Out</button>
@@ -48,7 +52,7 @@ const Header = () => {
         <div className="max-w-screen-xl navbar bg-base-300">
           <div className="flex-none lg:hidden">
             <label htmlFor="my-drawer-3" className="btn btn-square btn-ghost">
-              <svg
+              {/* <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
@@ -60,11 +64,12 @@ const Header = () => {
                   strokeWidth="2"
                   d="M4 6h16M4 12h16M4 18h16"
                 ></path>
-              </svg>
+              </svg> */}
+              <FaBars className="h-7 w-7" />
             </label>
           </div>
           <div className="flex-1 px-2 mx-2">
-            <img src={logo} className="h-24" alt="" />
+            <img src={logo} className="h-20" alt="" />
           </div>
           <div className="flex-none hidden lg:block">
             <ul className="menu menu-horizontal">
