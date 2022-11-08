@@ -45,7 +45,7 @@ const Header = () => {
     </>
   );
   return (
-    <div className="drawer bg-base-200">
+    <div className="drawer bg-base-200 h-auto">
       <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content flex flex-col">
         {/* <!-- Navbar --> */}
