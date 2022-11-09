@@ -1,5 +1,7 @@
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
+import { PhotoProvider, PhotoView } from "react-photo-view";
+import "react-photo-view/dist/react-photo-view.css";
 
 import Spinner from "../Shared/Spinner/Spinner";
 import { Link, useParams } from "react-router-dom";
@@ -39,7 +41,13 @@ const ServiceDetails = () => {
         <ServiceReviews id={_id} />
       </div>
       <div className="order-1 lg:order-2">
-        <img src={imageURL} className="w-full" alt="" />
+        <PhotoProvider>
+          <PhotoView src={imageURL}>
+            <figure>
+              <img src={imageURL} className="w-full" alt="" />
+            </figure>
+          </PhotoView>
+        </PhotoProvider>
         <h6 className="my-4 text-xl font-medium tracking-wide">
           Service charge: ${price}
         </h6>

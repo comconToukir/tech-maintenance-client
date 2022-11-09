@@ -4,7 +4,7 @@ const ReviewCard = ({
   reviewData: { userPhoto, userName, rating, review, updatedDate },
 }) => {
   return (
-    <div className="border border-base-100 p-6 rounded-md max-w-lg mb-5">
+    <div className="border border-base-100 p-6 rounded-md max-w-lg mb-5 shadow-md">
       <div className="flex gap-5 items-center">
         <img
           className="h-12 w-12 object-cover rounded-full"
