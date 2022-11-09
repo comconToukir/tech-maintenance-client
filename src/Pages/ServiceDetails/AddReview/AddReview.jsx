@@ -6,6 +6,7 @@ import Spinner from "../../Shared/Spinner/Spinner";
 import { useContext } from "react";
 import { UserContext } from "./../../../Contexts/UserContext";
 import toast from "react-hot-toast";
+import { Link } from "react-router-dom";
 
 const AddReview = ({ id }) => {
   const { user } = useContext(UserContext);
@@ -34,9 +35,10 @@ const AddReview = ({ id }) => {
     const review = data.reviewText;
     const rating = data.reviewRating;
     const email = user.email;
+    const name = user.displayName;
     const userPhoto = user.photoURL;
 
-    const doc = { review, rating, email, userPhoto };
+    const doc = { review, rating, email, userPhoto, name };
 
     mutation.mutate(doc);
   };
@@ -118,7 +120,9 @@ const AddReview = ({ id }) => {
           />
         </form>
       ) : (
-        <h2 className="p-3 my-3 bg-base-300 rounded-md">Please log in to add review</h2>
+        <h2 className="p-3 my-3 bg-base-300 rounded-md max-w-lg">
+          Please <Link to="/login" className="link">log in</Link> to add review
+        </h2>
       )}
     </>
   );
