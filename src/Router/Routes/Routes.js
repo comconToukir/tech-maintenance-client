@@ -9,6 +9,7 @@ import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import Main from './../../Layout/Main';
 import SignUp from './../../Pages/SignUp/SignUp';
 import ServiceDetails from './../../Pages/ServiceDetails/ServiceDetails';
+import ErrorPage from "../../Pages/ErrorPage/ErrorPage";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -26,6 +27,7 @@ const router = createBrowserRouter(
         path="/add-service"
         element={<PrivateRoute><AddService /></PrivateRoute>}
       />
+      <Route path="/*" element={<ErrorPage />} />
     </Route>
   )
 )

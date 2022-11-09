@@ -2,7 +2,7 @@ import { Oval } from "react-loader-spinner";
 
 const Spinner = () => {
   return (
-    <div className="mt-48 w-full grid place-items-center">
+    <div className="my-36 w-full grid place-items-center">
       <Oval
       height={70}
       width={70}

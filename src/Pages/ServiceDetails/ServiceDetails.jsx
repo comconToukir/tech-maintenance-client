@@ -6,6 +6,7 @@ import "react-photo-view/dist/react-photo-view.css";
 import Spinner from "../Shared/Spinner/Spinner";
 import { Link, useParams } from "react-router-dom";
 import ServiceReviews from "./ServiceReviews/ServiceReviews";
+import ErrorPage from "../ErrorPage/ErrorPage";
 
 const ServiceDetails = () => {
   const { id } = useParams();
@@ -16,7 +17,7 @@ const ServiceDetails = () => {
 
   if (!!isLoading) return <Spinner />;
 
-  if (!!isError) return "error";
+  if (!!isError) return <ErrorPage />;
 
   const {
     _id,
@@ -38,7 +39,7 @@ const ServiceDetails = () => {
           What I Offer
         </h2>
         <p>{description}</p>
-        <ServiceReviews id={_id} />
+        <ServiceReviews id={_id} serviceName={serviceName} />
       </div>
       <div className="order-1 lg:order-2">
         <PhotoProvider>

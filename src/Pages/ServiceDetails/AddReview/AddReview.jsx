@@ -1,14 +1,13 @@
 import axios from "axios";
-import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
 
-import Spinner from "../../Shared/Spinner/Spinner";
 import { useContext } from "react";
 import { UserContext } from "./../../../Contexts/UserContext";
 import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 
-const AddReview = ({ id }) => {
+const AddReview = ({ id, serviceName }) => {
   const { user } = useContext(UserContext);
   const queryClient = useQueryClient();
   const {
@@ -38,7 +37,14 @@ const AddReview = ({ id }) => {
     const name = user.displayName;
     const userPhoto = user.photoURL;
 
-    const doc = { review, rating, email, userPhoto, name };
+    const doc = {
+      review,
+      rating,
+      email,
+      userPhoto,
+      name,
+      serviceName,
+    };
 
     mutation.mutate(doc);
   };
@@ -48,51 +54,19 @@ const AddReview = ({ id }) => {
       {user ? (
         <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col">
           <div className="rating mt-5">
-            <input
-              type="radio"
-              name="rating-2"
-              value="1"
-              className="mask mask-star-2 bg-orange-400"
-              {...register("reviewRating", {
-                required: true,
-              })}
-            />
-            <input
-              type="radio"
-              name="rating-2"
-              value="2"
-              className="mask mask-star-2 bg-orange-400"
-              {...register("reviewRating", {
-                required: true,
-              })}
-            />
-            <input
-              type="radio"
-              name="rating-2"
-              value="3"
-              className="mask mask-star-2 bg-orange-400"
-              {...register("reviewRating", {
-                required: true,
-              })}
-            />
-            <input
-              type="radio"
-              name="rating-2"
-              value="4"
-              className="mask mask-star-2 bg-orange-400"
-              {...register("reviewRating", {
-                required: true,
-              })}
-            />
-            <input
-              type="radio"
-              name="rating-2"
-              value="5"
-              className="mask mask-star-2 bg-orange-400"
-              {...register("reviewRating", {
-                required: true,
-              })}
-            />
+            {Array(5)
+              .fill()
+              .map(() => (
+                <input
+                  type="radio"
+                  name="rating-2"
+                  value="1"
+                  className="mask mask-star-2 bg-orange-400"
+                  {...register("reviewRating", {
+                    required: true,
+                  })}
+                />
+              ))}
             <span className="ml-3 text-sm">(Add Rating)</span>
             <br />
           </div>
@@ -121,7 +95,11 @@ const AddReview = ({ id }) => {
         </form>
       ) : (
         <h2 className="p-3 my-3 bg-base-300 rounded-md max-w-lg">
-          Please <Link to="/login" className="link">log in</Link> to add review
+          Please{" "}
+          <Link to="/login" className="link">
+            log in
+          </Link>{" "}
+          to add review
         </h2>
       )}
     </>
