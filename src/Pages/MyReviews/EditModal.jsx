@@ -24,7 +24,7 @@ const EditModal = ({ show, closeEditModal, reviewData }) => {
       // Invalidate and refetch
       queryClient.invalidateQueries({ queryKey: [`my-reviews`] });
       reset();
-      toast.success("Thank you for your valuable feedback!");
+      toast.success("Review has been successfully edited.");
       closeEditModal();
     },
   });
@@ -103,7 +103,7 @@ const EditModal = ({ show, closeEditModal, reviewData }) => {
         <div className="modal-footer p-3">
           <button
             onClick={closeEditModal}
-            className="btn-warning text-sm font-semibold py-2 px-4 rounded-md"
+            className="btn-warning hover:bg-yellow-600 text-sm font-semibold py-2 px-4 rounded-md"
           >
             Close
           </button>

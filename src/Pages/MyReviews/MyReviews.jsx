@@ -9,6 +9,7 @@ import Spinner from "../Shared/Spinner/Spinner";
 import ErrorPage from "../ErrorPage/ErrorPage";
 import ReviewTableItem from "./ReviewTableItem";
 import EditModal from "./EditModal";
+import DeleteModal from "./DeleteModal";
 
 const MyReviews = () => {
   const [editModal, setEditModal] = useState({
@@ -16,7 +17,10 @@ const MyReviews = () => {
     editModalData: null,
   });
 
-  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [deleteModal, setDeleteModal] = useState({
+    showDeleteModal: false,
+    deleteModalData: null,
+  });
 
   const {
     user: { email, displayName, photoURL },
@@ -34,6 +38,10 @@ const MyReviews = () => {
 
   const closeEditModal = () => {
     setEditModal((editModal) => ({...editModal, showEditModal: false}))
+  }
+
+  const closeDeleteModal = () => {
+    setDeleteModal((deleteModal) => ({...deleteModal, showDeleteModal: false}))
   }
 
   return (
@@ -71,12 +79,18 @@ const MyReviews = () => {
                   reviewData={review}
                   idx={idx + 1}
                   setEditModal={setEditModal}
+                  setDeleteModal={setDeleteModal}
                 />
               ))}
             </tbody>
           </table>
         )}
       </div>
+      <DeleteModal
+        show={deleteModal.showDeleteModal}
+        closeDeleteModal={closeDeleteModal}
+        reviewData={deleteModal.deleteModalData}
+      />
       <EditModal
         show={editModal.showEditModal}
         closeEditModal={closeEditModal}

@@ -56,11 +56,12 @@ const AddReview = ({ id, serviceName }) => {
           <div className="rating mt-5">
             {Array(5)
               .fill()
-              .map(() => (
+              .map((_, idx) => (
                 <input
+                  key={idx}
                   type="radio"
                   name="rating-2"
-                  value="1"
+                  value={idx + 1}
                   className="mask mask-star-2 bg-orange-400"
                   {...register("reviewRating", {
                     required: true,
@@ -75,7 +76,7 @@ const AddReview = ({ id, serviceName }) => {
           )}
           <textarea
             name=""
-            className="input input-bordered w-full max-w-md h-24 mt-5 rounded-sm"
+            className="input input-bordered w-full max-w-md h-24 mt-5 px-3 py-2 rounded-sm"
             placeholder="write review here"
             aria-label="Write review here"
             {...register("reviewText", {

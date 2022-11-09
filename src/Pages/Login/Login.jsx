@@ -48,7 +48,7 @@ const Login = () => {
   };
 
   return (
-    <div className="mt-20 px-4 py-6 bg-base-300 max-w-md mx-auto rounded-md shadow-sm">
+    <div className="my-28 px-4 py-6 bg-base-300 max-w-md mx-auto rounded-md shadow-sm">
       <form onSubmit={handleSubmit(handleSignIn)}>
         <div className="form-control">
           <label className="label">
