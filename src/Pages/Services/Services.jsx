@@ -14,6 +14,7 @@ const Services = () => {
   if (!!isError) return "error";
 
   const services = data.data;
+  
   return (
     <>
       <div className="form-control w-full max-w-md mx-auto my-20">

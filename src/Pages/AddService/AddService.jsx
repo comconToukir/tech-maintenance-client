@@ -74,6 +74,7 @@ const AddService = () => {
           <input
             type="file"
             accept="image/*"
+            className="file-input file-input-bordered w-full max-w-xs"
             onChange={handleImageChange}
             aria-label="upload photo"
             required
@@ -118,7 +119,7 @@ const AddService = () => {
           </label>
           <textarea
             rows="4"
-            type="number"
+            type="text"
             className="input input-bordered w-full max-w-md h-36 rounded-sm"
             placeholder="description"
             aria-label="description"

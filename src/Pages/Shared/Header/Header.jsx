@@ -57,7 +57,7 @@ const Header = () => {
       <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content flex flex-col">
         {/* <!-- Navbar --> */}
-        <div className="max-w-screen-xl navbar bg-base-300">
+        <div className="max-w-screen-xl navbar bg-base-300 fixed z-10">
           <div className="flex-none lg:hidden">
             <label htmlFor="my-drawer-3" className="btn btn-square btn-ghost">
               <FaBars className="h-6 w-6" />
@@ -77,7 +77,7 @@ const Header = () => {
             <ul className="menu menu-horizontal">{menuItems}</ul>
           </div>
         </div>
-        <div>
+        <div className="mt-16 lg:mt-24">
           <Outlet />
         </div>
       </div>

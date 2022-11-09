@@ -19,8 +19,6 @@ const SignUp = () => {
 
   const from = location.state?.from?.pathname || "/";
 
-  console.log(from);
-
   const {
     register,
     handleSubmit,
