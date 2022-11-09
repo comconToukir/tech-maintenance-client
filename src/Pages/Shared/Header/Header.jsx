@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { Link, Outlet, useNavigate } from "react-router-dom";
-import { FaBars } from 'react-icons/fa';
+import { FaBars } from "react-icons/fa";
 
 import { signOutUser } from "../../../utils/firebase.utils";
 import { UserContext } from "../../../Contexts/UserContext";
@@ -20,6 +20,9 @@ const Header = () => {
       <li className="font-semibold">
         <Link to="/">Home</Link>
       </li>
+      <li className="font-semibold">
+        <Link to="/services">Services</Link>
+      </li>
       {user?.email ? (
         <>
           <li className="font-semibold">
@@ -29,17 +32,22 @@ const Header = () => {
             <Link to="/my-reviews">My Reviews</Link>
           </li>
           <li className="font-semibold">
-            <button onClick={handleLogOut}>Log Out</button>
+            <button
+              onClick={handleLogOut}
+              className="btn-success hover:bg-emerald-600 text-base-300 transition-all  font-medium py-1 px-4 rounded-md"
+            >
+              Log Out
+            </button>
           </li>
         </>
       ) : (
         <>
-        <li className="font-semibold">
-          <Link to="/login">Login</Link>
-        </li>
-        <li className="font-semibold">
-          <Link to="/sign-up">Sign Up</Link>
-        </li>
+          <li className="font-semibold">
+            <Link to="/login">Login</Link>
+          </li>
+          <li className="font-semibold">
+            <Link to="/sign-up">Sign Up</Link>
+          </li>
         </>
       )}
     </>
@@ -52,44 +60,30 @@ const Header = () => {
         <div className="max-w-screen-xl navbar bg-base-300">
           <div className="flex-none lg:hidden">
             <label htmlFor="my-drawer-3" className="btn btn-square btn-ghost">
-              {/* <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                className="inline-block w-6 h-6 stroke-current"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 6h16M4 12h16M4 18h16"
-                ></path>
-              </svg> */}
-              <FaBars className="h-7 w-7" />
+              <FaBars className="h-6 w-6" />
             </label>
           </div>
           <div className="flex-1 px-2 mx-2">
-            <img src={logo} className="h-16 lg:h-20" alt="" />
-            <h1 className="ml-7 text-2xl lg:text-3xl font-semibold lg:tracking-wider">TECH MAINTENANCE</h1>
+            <Link to="/">
+              <img src={logo} className="h-14 lg:h-20" alt="" />
+            </Link>
+            <Link to="/">
+              <h1 className="ml-7 text-xl lg:text-3xl font-semibold tracking-wider lg:tracking-widest">
+                TECH MAINTENANCE
+              </h1>
+            </Link>
           </div>
           <div className="flex-none hidden lg:block">
-            <ul className="menu menu-horizontal">
-              {/* <!-- Navbar menu content here --> */}
-              {menuItems}
-            </ul>
+            <ul className="menu menu-horizontal">{menuItems}</ul>
           </div>
         </div>
-        {/* <!-- Page content here --> */}
         <div>
           <Outlet />
         </div>
       </div>
       <div className="drawer-side">
         <label htmlFor="my-drawer-3" className="drawer-overlay"></label>
-        <ul className="menu p-4 w-80 bg-base-100">
-          {/* <!-- Sidebar content here --> */}
-          {menuItems}
-        </ul>
+        <ul className="menu p-4 w-80 bg-base-100">{menuItems}</ul>
       </div>
     </div>
   );

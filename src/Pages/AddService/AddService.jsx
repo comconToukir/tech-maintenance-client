@@ -52,7 +52,7 @@ const AddService = () => {
         toast.success("Successfully added the new service.");
         setPreviewSource("")
         reset();
-        queryClient.invalidateQueries({ queryKey: ['three-services'] });
+        queryClient.invalidateQueries({ queryKey: ['all-services'] });
       })
       .catch((err) => console.error(err))
   };

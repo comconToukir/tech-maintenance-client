@@ -12,11 +12,7 @@ const CarouselItem = ({ slideData: { image, id, prev, next } }) => {
   return (
     <div ref={ref} id={`slide${id}`} className="carousel-item relative w-full">
       <div className="carousel-image w-full h-[700px]">
-        <img
-          src={image}
-          className="w-full h-full object-cover"
-          alt=""
-        />
+        <img src={image} className="w-full h-full object-cover" alt="" />
       </div>
       <div
         className={`absolute flex flex-col justify-end gap-5 transform -translate-y-1/2 left-24 top-1/4 animated ${
@@ -24,12 +20,11 @@ const CarouselItem = ({ slideData: { image, id, prev, next } }) => {
         }`}
       >
         <h1 className="text-5xl font-bold leading-normal text-white ">
-          Get Quality
-          <br />
-          Service With a <br />
-          Single Call
+          Get the help <br />
+          you need, every <br />
+          step of the way
         </h1>
-        <p className="text-white text-lg leading-7">
+        <p className="text-base-content text-md leading-7">
           Anything technology related help you <br />
           may need now you can access with <br />
           just an order. See what you might need below.

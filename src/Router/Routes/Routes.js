@@ -4,9 +4,11 @@ import AddService from "../../Pages/AddService/AddService";
 import Home from "../../Pages/Home/Home/Home";
 import Login from "../../Pages/Login/Login";
 import MyReviews from "../../Pages/MyReviews/MyReviews";
+import Services from "../../Pages/Services/Services";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import Main from './../../Layout/Main';
 import SignUp from './../../Pages/SignUp/SignUp';
+import ServiceDetails from './../../Pages/ServiceDetails/ServiceDetails';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -14,6 +16,8 @@ const router = createBrowserRouter(
       <Route path="/" element={<Home />} />
       <Route path="/login" element={<Login />} />
       <Route path="/sign-up" element={<SignUp />} />
+      <Route path="/services" element={<Services />} />
+      <Route path="/service/:id" element={<ServiceDetails />} />
       <Route
         path="/my-reviews"
         element={<PrivateRoute><MyReviews /></PrivateRoute>}

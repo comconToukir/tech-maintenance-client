@@ -11,10 +11,10 @@ const ServiceCard = ({
       </figure>
       <div className="card-body">
         <h2 className="card-title border-b-2 border-base-200 pb-2">{serviceName}</h2>
-        <span>Service Charge: {price}</span>
+        <span>Service Charge: ${price}</span>
         <p>{description.slice(0, 100)}...</p>
-        <div className="card-actions justify-end">
-          <Link className="btn-success hover:bg-emerald-700 transition-all hover:text-white font-medium py-1 px-4 rounded-md">View Details</Link>
+        <div className="card-actions justify-end mt-5">
+          <Link to={`/service/${_id}`} className="btn-success hover:bg-emerald-600 transition-all  font-medium py-1 px-4 rounded-sm">View Details</Link>
         </div>
       </div>
     </div>
