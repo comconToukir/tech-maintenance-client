@@ -18,9 +18,9 @@ const Login = () => {
 
   const getCookie = (email) =>
     fetch(
-      `https://service-review-server-side-omega.vercel.app/login?email=${email}`, {
-        method: 'GET',
-        credentials: 'include',
+      `http://localhost:5000/login?email=${email}`,
+      {
+        withCredentials: true,
       }
     )
       .then((res) => res.json())
