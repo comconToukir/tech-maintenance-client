@@ -17,12 +17,11 @@ const Login = () => {
   const { loading, setLoading } = useContext(UserContext);
 
   const getCookie = (email) =>
-    fetch(
-      `http://localhost:5000/login?email=${email}`,
-      {
-        withCredentials: true,
-      }
-    )
+    fetch(`http://localhost:5000/login?email=${email}`, {
+      method: "GET",
+      // withCredentials: true,
+      credentials: 'include'
+    })
       .then((res) => res.json())
       .then((data) => {
         if (data.message === "Logged in successfully") {

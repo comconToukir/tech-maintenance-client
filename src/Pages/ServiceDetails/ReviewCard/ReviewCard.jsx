@@ -19,7 +19,7 @@ const ReviewCard = ({
         </div>
         <div className="rating rating-xs">
           {ratingDumArr.map((_, i) => (
-            <RatingStars key={i} rating={rating} idx={i+1} />
+            <RatingStars key={i} rating={rating} idx={i + 1} />
           ))}
         </div>
       </div>
