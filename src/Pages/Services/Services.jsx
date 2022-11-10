@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 
 import Spinner from "../Shared/Spinner/Spinner";
 import ServiceCard from "../Shared/ServiceCard/ServiceCard";
+import MetaData from "../../Layout/MetaData";
 
 const Services = () => {
   const { isLoading, data, isError } = useQuery(["all-services"], () => {
@@ -17,6 +18,7 @@ const Services = () => {
   
   return (
     <>
+      <MetaData title="Services" />
       <div className="form-control w-full max-w-md mx-auto my-20">
         <label className="label">
           <span className="label-text">

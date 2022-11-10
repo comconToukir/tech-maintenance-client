@@ -10,6 +10,7 @@ import ErrorPage from "../ErrorPage/ErrorPage";
 import ReviewTableItem from "./ReviewTableItem";
 import EditModal from "./EditModal";
 import DeleteModal from "./DeleteModal";
+import MetaData from "../../Layout/MetaData";
 
 const MyReviews = () => {
   const [editModal, setEditModal] = useState({
@@ -45,6 +46,8 @@ const MyReviews = () => {
   }
 
   return (
+    <>
+    <MetaData title="My Reviews" />
     <div className={`p-12`}>
       <div className="grid grid-cols-1 lg:grid-cols-[400px,1fr] gap-12">
         <PhotoProvider>
@@ -97,6 +100,7 @@ const MyReviews = () => {
         reviewData={editModal.editModalData}
       />
     </div>
+        </>
   );
 };
 

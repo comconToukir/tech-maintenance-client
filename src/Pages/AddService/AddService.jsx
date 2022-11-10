@@ -6,6 +6,7 @@ import {
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import { AiOutlinePicture } from "react-icons/ai";
+import MetaData from "../../Layout/MetaData";
 
 const axiosHeader = {
   headers: { "Content-Type": "application/json" },
@@ -58,6 +59,8 @@ const AddService = () => {
   };
 
   return (
+    <>
+    <MetaData title="Add a Service" />
     <form className="" onSubmit={handleSubmit(onSubmit)}>
       <div className="form-control grid grid-cols-1 lg:grid-cols-2">
         <div className="p-10">
@@ -139,6 +142,7 @@ const AddService = () => {
         </div>
       </div>
     </form>
+    </>
   );
 };
 

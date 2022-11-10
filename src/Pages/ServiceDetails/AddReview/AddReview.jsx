@@ -89,7 +89,7 @@ const AddReview = ({ id, serviceName }) => {
           <br />
           <input
             type="submit"
-            className="btn-success w-min py-1 px-5 mt-3 mb-7 rounded-md font-semibold hover:bg-emerald-600 transition-all"
+            className="btn-success w-min cursor-pointer py-1 px-5 mt-3 mb-7 rounded-md font-semibold hover:bg-emerald-600 transition-all"
             value="Submit Review"
             aria-label="submit"
           />

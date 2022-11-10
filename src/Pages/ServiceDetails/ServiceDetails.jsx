@@ -7,6 +7,7 @@ import Spinner from "../Shared/Spinner/Spinner";
 import { Link, useParams } from "react-router-dom";
 import ServiceReviews from "./ServiceReviews/ServiceReviews";
 import ErrorPage from "../ErrorPage/ErrorPage";
+import MetaData from "../../Layout/MetaData";
 
 const ServiceDetails = () => {
   const { id } = useParams();
@@ -30,6 +31,8 @@ const ServiceDetails = () => {
   } = data.data;
 
   return (
+    <>
+    <MetaData title={serviceName} />
     <div className="grid grid-cols-1 lg:grid-cols-[1fr,400px] p-10 gap-10 min-h-screen">
       <div className="order-2 lg:order-1">
         <h1 className="text-4xl font-bold tracking-wider ">{serviceName}</h1>
@@ -59,6 +62,7 @@ const ServiceDetails = () => {
         </Link>
       </div>
     </div>
+    </>
   );
 };
 
