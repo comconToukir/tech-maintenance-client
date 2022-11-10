@@ -1,5 +1,6 @@
 import { useContext } from "react";
-import { Link, Outlet, useNavigate } from "react-router-dom";
+import axios from "axios";
+import { Link, Outlet } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
 
 import { signOutUser } from "../../../utils/firebase.utils";
@@ -7,12 +8,16 @@ import { UserContext } from "../../../Contexts/UserContext";
 import logo from "../../../assets/logo/logo.jpg";
 
 const Header = () => {
-  const navigate = useNavigate();
   const { user } = useContext(UserContext);
+
+  const deleteCookie = () =>
+    axios.get("https://service-review-server-side-omega.vercel.app/logout", {
+      withCredentials: true
+    });
 
   const handleLogOut = () =>
     signOutUser()
-      .then(navigate("/"))
+      .then(() => deleteCookie())
       .catch((err) => console.log(err));
 
   const menuItems = (

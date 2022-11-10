@@ -11,8 +11,24 @@ import {
 } from "../../utils/firebase.utils";
 import { UserContext } from "../../Contexts/UserContext";
 import MetaData from "../../Layout/MetaData";
+import axios from "axios";
 
 const SignUp = () => {
+  const getCookie = (email) =>
+  axios
+    .get(
+      `https://service-review-server-side-omega.vercel.app/login?email=${email}`,
+      {
+        withCredentials: true,
+      }
+    )
+    .then(({ data }) => {
+      if (data.message === "Logged in successfully") {
+        reset();
+        navigate(from, { replace: true });
+      }
+    });
+
   const navigate = useNavigate();
   const { setLoading } = useContext(UserContext);
 
@@ -46,6 +62,11 @@ const SignUp = () => {
     setLoading(true);
 
     createUser(email, password)
+      .then(({ user }) => {
+        const email = user.email;
+
+        getCookie(email);
+      })
       .then(() => handleUpdateProfile({ displayName, photoURL }))
       .catch((error) => {
         toast.error(error.code);
@@ -161,7 +182,7 @@ const SignUp = () => {
         <div className="flex flex-col justify-center items-center mt-5">
           <FaGoogle
             onClick={handleGoogleSignIn}
-            className="bg-base-100 text-white w-10 h-10 p-2 rounded-full cursor-pointer"
+            className="bg-base-100 text-blue-500 w-10 h-10 p-2 rounded-full cursor-pointer shadow-md"
           />
         </div>
       </div>
