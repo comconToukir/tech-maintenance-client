@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import Spinner from "../Shared/Spinner/Spinner";
 import ServiceCard from "../Shared/ServiceCard/ServiceCard";
 import MetaData from "../../Layout/MetaData";
+import ErrorPage from './../ErrorPage/ErrorPage';
 
 const Services = () => {
   const { isLoading, data, isError } = useQuery(["all-services"], () => {
@@ -12,7 +13,7 @@ const Services = () => {
 
   if (!!isLoading) return <Spinner />;
 
-  if (!!isError) return "error";
+  if (!!isError) return <ErrorPage />;
 
   const services = data.data;
   

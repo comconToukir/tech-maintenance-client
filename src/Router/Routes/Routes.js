@@ -10,14 +10,22 @@ import Main from './../../Layout/Main';
 import SignUp from './../../Pages/SignUp/SignUp';
 import ServiceDetails from './../../Pages/ServiceDetails/ServiceDetails';
 import ErrorPage from "../../Pages/ErrorPage/ErrorPage";
+import Blogs from "../../Pages/Blogs/Blogs/Blogs";
+import BlogDetails from "../../Pages/Blogs/Blogs/BlogDetails/BlogDetails";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<Main />}>
+    <Route
+      path="/"
+      element={<Main />}
+      errorElement={<ErrorPage />}
+    >
       <Route path="/" element={<Home />} />
       <Route path="/login" element={<Login />} />
       <Route path="/sign-up" element={<SignUp />} />
       <Route path="/services" element={<Services />} />
+      <Route path="/blogs" element={<Blogs />} />
+      <Route path="/blog/:id" element={<BlogDetails />} />
       <Route path="/service/:id" element={<ServiceDetails />} />
       <Route
         path="/my-reviews"

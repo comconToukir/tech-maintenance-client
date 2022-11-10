@@ -23,6 +23,9 @@ const Header = () => {
       <li className="font-semibold">
         <Link to="/services">Services</Link>
       </li>
+      <li className="font-semibold">
+        <Link to="/blogs">Blogs</Link>
+      </li>
       {user?.email ? (
         <>
           <li className="font-semibold">
@@ -83,7 +86,7 @@ const Header = () => {
       </div>
       <div className="drawer-side">
         <label htmlFor="my-drawer-3" className="drawer-overlay"></label>
-        <ul className="menu p-4 w-80 bg-base-100">{menuItems}</ul>
+        <ul className="menu p-4 w-80 bg-base-100 h-screen">{menuItems}</ul>
       </div>
     </div>
   );
