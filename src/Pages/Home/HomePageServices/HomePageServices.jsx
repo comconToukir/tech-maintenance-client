@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 const HomePageServices = () => {
   const { isLoading, data, isError } = useQuery(["three-services"], () => {
-    return axios.get(`http://localhost:5000/services-limited`);
+    return axios.get(`https://service-review-server-side-omega.vercel.app/services-limited`);
   });
 
   // if (!!isLoading) return <Spinner />;

@@ -18,7 +18,7 @@ const AddReview = ({ id, serviceName }) => {
   } = useForm();
 
   const postReview = (reviewData) =>
-    axios.post(`http://localhost:5000/reviews/${id}`, reviewData);
+    axios.post(`https://service-review-server-side-omega.vercel.app/reviews/${id}`, reviewData);
 
   const mutation = useMutation({
     mutationFn: postReview,

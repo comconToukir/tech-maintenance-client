@@ -9,7 +9,7 @@ const DeleteModal = ({ show, closeDeleteModal, reviewData }) => {
   const queryClient = useQueryClient();
 
   const deleteReview = (reviewData) =>
-    axios.delete(`http://localhost:5000/delete-review/${id}`, reviewData);
+    axios.delete(`https://service-review-server-side-omega.vercel.app/delete-review/${id}`, reviewData);
 
   const mutation = useMutation({
     mutationFn: deleteReview,

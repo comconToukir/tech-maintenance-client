@@ -16,7 +16,7 @@ const EditModal = ({ show, closeEditModal, reviewData }) => {
 
   // By default, if the 2nd parameter to axios.put() is an object, Axios serializes the object to JSON using the JSON.stringify() function. If the 2nd parameter is an object, Axios also sets the content-type header to application/json
   const editReview = (reviewData) =>
-    axios.put(`http://localhost:5000/edit-review/${id}`, reviewData);
+    axios.put(`https://service-review-server-side-omega.vercel.app/edit-review/${id}`, reviewData);
 
   const mutation = useMutation({
     mutationFn: editReview,

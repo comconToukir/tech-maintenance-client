@@ -12,7 +12,7 @@ const ServiceDetails = () => {
   const { id } = useParams();
 
   const { isLoading, data, isError } = useQuery([id], () => {
-    return axios.get(`http://localhost:5000/service/${id}`);
+    return axios.get(`https://service-review-server-side-omega.vercel.app/service/${id}`);
   });
 
   if (!!isLoading) return <Spinner />;

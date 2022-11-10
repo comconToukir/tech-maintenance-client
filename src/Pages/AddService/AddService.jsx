@@ -47,7 +47,7 @@ const AddService = () => {
     };
 
     axios
-      .post("http://localhost:5000/add-service", { formData }, axiosHeader)
+      .post("https://service-review-server-side-omega.vercel.app/add-service", { formData }, axiosHeader)
       .then((res) => {
         toast.success("Successfully added the new service.");
         setPreviewSource("")

@@ -6,7 +6,7 @@ import ServiceCard from "../Shared/ServiceCard/ServiceCard";
 
 const Services = () => {
   const { isLoading, data, isError } = useQuery(["all-services"], () => {
-    return axios.get(`http://localhost:5000/services`);
+    return axios.get(`https://service-review-server-side-omega.vercel.app/services`);
   });
 
   if (!!isLoading) return <Spinner />;

@@ -8,7 +8,7 @@ import ErrorPage from './../../ErrorPage/ErrorPage';
 
 const ServiceReviews = ({ id, serviceName }) => {
   const { isLoading, data, isError } = useQuery([`reviews-${id}`], () => {
-    return axios.get(`http://localhost:5000/reviews/${id}`);
+    return axios.get(`https://service-review-server-side-omega.vercel.app/reviews/${id}`);
   });
 
   if (!!isLoading) return <Spinner />;

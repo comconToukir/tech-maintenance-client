@@ -27,7 +27,7 @@ const MyReviews = () => {
   } = useContext(UserContext);
 
   const { isLoading, data, isError } = useQuery(["my-reviews"], () => {
-    return axios.get(`http://localhost:5000/my-reviews?email=${email}`);
+    return axios.get(`https://service-review-server-side-omega.vercel.app/my-reviews?email=${email}`);
   });
 
   if (!!isLoading) return <Spinner />;
